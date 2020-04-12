@@ -1,0 +1,20 @@
+<div class="row" >
+  <div class="bar fixed-top" [ngClass]="{'notActive': !scrolling,'active': scrolling}"  *ngIf="!route.url.includes('login')" [hidden]="route.url.includes('/login')">
+    <div class="col-sm-7">
+      <a [routerLink]="['/']"><img [ngClass]="{'logo-bar-active': !scrolling,'logo-bar': scrolling}" class="logo-bar" src="/assets/logo2.png"></a>
+      <div class="search-bar"></div>
+    </div>
+    <div class="col-sm-5 menu-items">
+      <button class="btn" [routerLink]="['/']">
+        <i class="fa fa-home"></i> Home</button>
+      <button class="btn" >About</button>
+      <button class="btn">Contact</button>
+      <button class="btn" [routerLink]="['/location']">Locations</button>
+      <button class="btn" [routerLink]="['/orders']">Orders</button>
+      <button *ngIf="!!user && !!isLogged" class="btn" (click)="open()" >
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span>{{user.username}}</span></button>
+      <button class="btn" *ngIf="!!isLogged" (click)=" logout()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
+    </div>
+  </div>

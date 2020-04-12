@@ -1,0 +1,81 @@
+<div class="wall">
+  <h4 class="header-title">Orders</h4>
+</div>
+<div class="triangle-bottomright"></div>
+<div class="container-fluid">
+  <div class="row" *ngIf="!!orders">
+    <div class="col-md-12">
+      <div class="table-container table-responsive table-position" >
+        <table class="table table-hover" *ngIf="!!orders.length" >
+          <thead>
+            <tr>
+              <th width="50"></th>
+              <th>Event</th>
+              <th>Event Date & Time</th>
+              <th>Ticket type</th>
+              <th>Each ticket price</th>
+              <th>Total</th>
+              <th>Contact</th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td></td>
+              <td>
+                <span class="d-block" *ngFor="let event of order.orderEvents">
+                  <strong>{{ event.event.name  }}</strong>
+                </span>
+              </td>
+              <td>
+                <span class="d-block" *ngFor="let event of order.orderEvents">
+                  {{ event.event.date  }} - {{ event.event.time  }}
+                </span>
+              </td>
+              <td>
+                <span class="d-block" *ngFor="let event of order.orderEvents">
+                  {{event.quantity}} x {{ event.ticket.location  }}
+                </span>
+              </td>
+              <td>
+                <span class="d-block" *ngFor="let event of order.orderEvents">
+                  {{event.quantity}} x {{ event.ticket.price  }}
+                  <small>MKD</small>  =<strong>{{event.total}}
+                  </strong>
+                  <small> MKD</small>
+                </span>
+              </td>
+              <td>
+                <span class="d-block">
+                  <strong>{{order.total }}
+                  </strong>
+                  <small>MKD</small>
+                </span>
+              </td>
+              <td>
+                <span class="d-block">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  {{order.email }}
+                </span>
+                <span class="d-block">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  {{order.phone}}
+                </span>
+                <span class="d-block">
+                  <i class="fa fa-address-card" aria-hidden="true"></i>
+                  {{order.address}}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-main"> Pay order</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="!orders.length" class="text-center">
+          <app-noitemfound></app-noitemfound>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

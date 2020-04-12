@@ -1,0 +1,83 @@
+<div  *ngIf="!!events">
+  <div class="bg">
+    <div class="flex-container">
+      <div class="nameFirst">
+        <strong>{{events.name }}</strong>
+      </div>
+    </div>
+  </div>
+  <div class="triangle-bottomright"></div>
+  <div  class="row row-class">
+    <div class="col-sm-6">
+      <h3 class="title-format">Gallery</h3>
+      <img class="image-size" [src]="images" alt="Loading Image">
+    </div>
+    <div class="col-sm-6">
+      <h3 class="title-format">Information</h3>
+      <hr>
+      <div>
+        <strong>
+          <i class="fa fa-calendar-o"></i>
+        </strong>
+        {{events.date}}</div>
+      <hr>
+      <div>
+        <strong>
+          <i class="fa fa-map-marker"></i>
+        </strong>{{events.place.name}}
+      </div>
+      <hr>
+      <div>
+        <strong>
+          <i class="fa fa-money"></i>
+        </strong>{{events.price}} MKD</div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12 col-12">
+          <h3 class="title-format">Tickets</h3>
+          <div class="text-center">
+            <div class="border-box text-left" *ngFor="let item of events.tickets">
+              <div>
+                <strong>
+                  <i class="fa fa-calendar-o"></i>{{item.location}}</strong>
+              </div>
+              <hr>
+              <div>
+                <strong>
+                  <i class="fa fa-map-marker"></i>{{item.price}}
+                </strong>
+                <small>MKD</small>
+                <hr>
+                <button (click)="decrement('Gaber',events.id,item.id,1)" class="btn btn-outline">Remove ticket</button>
+                <button (click)="increment(events.id,item.id,1)" class="btn btn-main">Add ticket</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-class">
+    <div class="col-sm-12 title-place">
+      <h3 class="title-format">Informations about location</h3>
+    </div>
+  </div>
+  <div class="row row-class">
+    <div class="col-sm-6">
+      <hr>
+      <div>
+        <strong>
+          <i class="fa fa-font"></i>
+        </strong>{{events.place.description}}
+      </div>
+      <hr>
+      <div>
+        <strong>
+          <i class="fa fa-location-arrow"></i>
+        </strong>{{events.place.name}}</div>
+      <hr>
+    </div>
+    <div class="col-sm-6" [innerHTML]="events.decription"></div>
+  </div>
+  <app-shopping-cart [cart]="cart"></app-shopping-cart>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="!!images">
+  <div *ngIf="!!events ">
+    <div class="col-sm-12">
+      <app-event-carousel [events]="allEvents" [images]="images"></app-event-carousel>
+    </div>
+  </div>
+  <div class="row event-title">
+    <div class="col-sm-12">
+      <h1>
+        <strong>Events</strong>
+      </h1>
+      <ul class="custom-ul">
+        <li (click)="getEvents()">All Events</li>
+      </ul>
+      <ul class="custom-ul" *ngFor="let category of categories">
+        <li>
+          <a (click)="getCategoryId(category.id)">{{category.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="triangle-bottomright"></div>
+  <div class="align-items-center ">
+    <div class="card-deck mx-5 ">
+      <div class=" w-50  cart-custom" *ngFor="let event of events">
+        <div class="example-card">
+          <a [routerLink]="[ '/details',event.id]">
+            <img class="card-img-top" [src]="images[events.indexOf(event)]" alt="fail to load image">
+            <div class="card-body">
+              <h5 class="card-title">{{event.name}}</h5>
+              <p class="card-text">{{event.time}}</p>
+              <p class="card-text">{{event.date}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!!events" class="m-auto">
+        <app-noitemfound *ngIf="!events.length"></app-noitemfound>
+      </div>
+    </div>
+  </div>
+</div>

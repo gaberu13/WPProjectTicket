@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: auto;
+  background-image: url("https://i.pinimg.com/originals/31/92/e1/3192e14331df3ba5786958713929b3e5.jpg");
+  background-size: cover;
+  animation: myfirst 6s;
+}
+
+@keyframes myfirst {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.example-card {
+  overflow: hidden;
+  background: #ffffffad; 
+  box-shadow: 20px 23px 9px -1px rgba(0, 0, 0, .2);
+  width: 400px;
+
+}
+.cart-custom {
+  margin: 1%;
+  transform: scale(1);
+  transition-duration: 0.2s;
+  flex: 0 0 20% !important;
+
+}
+.cart-custom :hover{
+  transform: scale(1.01);
+  transition-duration: 0.2s;
+  color: #c0272d;
+}
+
+
+a {
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.event-title {
+  background-color: #8a8f9552;
+  padding: 6% 16%;
+  margin: -4% auto;
+  color: #c0272d;
+  text-shadow: 2px 2px white;
+}
+
+.triangle-bottomright {
+  width: 0;
+  height: 0;
+  border-top: 500px solid #8a8f9552;
+  border-right: 500px solid transparent;
+  margin: -500px auto;
+  float: left;
+  margin: 4% auto;
+  position: absolute;
+}
+
+.custom-ul{
+  display: inline-block;
+  list-style-type:none !important;
+}
+.border-box{
+  border: 1px solid #e2e2e2;
+  display: inline-block;
+  margin: 10px 30px;
+  padding: 20px;
+  border-radius: 5px;
+}
+.btn-main{
+  background-image: linear-gradient(to left, #4c3b3b, #c0272d);
+  color: whitesmoke;
+  border-color: transparent;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  border: none;
+  white-space: initial;
+  &:hover{
+    background-image: linear-gradient(to right,  #4c3b3b, #c0272d);
+    color: white;
+  }
+}
+.btn:focus{
+  box-shadow: none !important;
+}
+.cart-badge{
+  position: absolute;
+    background: #c0272d;
+    border-radius: 50px;
+    top: 0;
+    right: 0;
+    padding: 0px 6px;
+    font-size: 11px;
+    color: white;
+}
+
+.wall{
+  margin-top: 6%;
+  height: 10%;
+  background-image: linear-gradient(to left, #533a3b, #b9282e);
+}
+.header-title{
+  color: white;
+  font-weight: bold;
+  padding: 2rem 7%;
+  margin: 0;
+}
+.color-title{
+  color: #b9282e;
+}
+
+.error-message{
+  color: red;
+}
