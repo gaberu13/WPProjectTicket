@@ -60,15 +60,15 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
-  removeFromCard(username, id, ticketId) {
-    this.cartService.removeCart(username, id, ticketId).subscribe((res) => {
+  removeFromCard(id, ticketId) {
+    this.cartService.removeCart(id, ticketId).subscribe((res) => {
       this.cart = res;
       // this.sharedEmitter.notify(this.cart);
     });
   }
-  decrement(username, id, ticketId, quantity) {
+  decrement(id, ticketId, quantity) {
     this.cartService
-      .removeFromCart(username, id, ticketId, quantity)
+      .removeFromCart(id, ticketId, quantity)
       .subscribe((res) => {
         this.cart = res;
       });

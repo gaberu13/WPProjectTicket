@@ -22,6 +22,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LocationComponent } from './components/location/location.component';
 import { NoitemfoundComponent } from './components/noitemfound/noitemfound.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserTypeDirective } from './directives/user-type.directive';
+import { EditLocationComponent } from './components/edit-location/edit-location.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LocationComponent,
     NoitemfoundComponent,
     FooterComponent,
+    UserTypeDirective,
+    EditLocationComponent,
   ],
   imports: [
     BrowserModule,

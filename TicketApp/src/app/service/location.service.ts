@@ -12,4 +12,14 @@ export class LocationService {
   getLocation(): Observable<any> {
     return this.http.get(this.url);
   }
+  addLocation(model): Observable<any> {
+    return this.http.post(this.url, model);
+  }
+  getById(id): Observable<any> {
+    return this.http.get(this.url + '/' + id);
+  }
+  delete(id): Observable<any> {
+    return this.http.post( `${this.url}/delete?id=${id}`, {});
+  }
 }
+

@@ -30,7 +30,10 @@ public class UserContorller {
     public void signUp(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setShoppingCart(new ShoppingCart());
-        user.setRole(Role.CLIENT);
+        if(userService.getAllUsers().isEmpty()){
+            user.setRole(Role.admin);
+        }
+        user.setRole(Role.user);
         userService.save(user);
     }
 

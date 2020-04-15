@@ -1,3 +1,4 @@
+import { UsersService } from 'src/app/service/users.service';
 import { Router } from '@angular/router';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 
@@ -6,7 +7,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 })
 export class AuthenticationService {
   @Output() contextChange: EventEmitter<boolean> = new EventEmitter();
-  constructor() {}
+
+  constructor(private service: UsersService) {}
 
   userKey = 'user';
 
@@ -34,6 +36,14 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('user');
     this.contextChange.emit(true);
+  }
+  getUserRole() {
+    let role: any;
+    this.service.getUser().subscribe((res) => {
+      role = res;
+    });
+    return role;
   }
 }

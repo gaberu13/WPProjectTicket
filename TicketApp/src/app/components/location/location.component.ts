@@ -1,5 +1,7 @@
+import { EditLocationComponent } from './../edit-location/edit-location.component';
 import { LocationService } from './../../service/location.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-location',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location.component.less'],
 })
 export class LocationComponent implements OnInit {
+  // locations: any;
   locations: any;
-  constructor(private service: LocationService) {}
+  constructor(
+    private service: LocationService,
+    private modalService: NgbModal
+  ) {}
 
   images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
     () => `https://picsum.photos/1600/600?random&t=${Math.random()}`
@@ -21,6 +27,26 @@ export class LocationComponent implements OnInit {
   getLocations() {
     this.service.getLocation().subscribe((res) => {
       this.locations = res;
+    });
+  }
+
+  open(itm?) {
+    const instance = this.modalService.open(EditLocationComponent, {
+      backdrop: 'static',
+      size: 'lg',
+    });
+
+    if (!!itm) {
+      instance.componentInstance.id = itm.id;
+    }
+    instance.result.then((res) => {
+      this.getLocations();
+    });
+  }
+
+  delete(id) {
+    this.service.delete(id).subscribe(res => {
+      this.getLocations();
     });
   }
 }

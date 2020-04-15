@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.logout();
     this.service.login(this.model).subscribe((res) => {
+      console.log(res);
       const token = res.headers.get('Authorization');
       this.authService.setToken(token);
       this.router.navigateByUrl('');

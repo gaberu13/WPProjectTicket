@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../authentication/authentication.service';
 import { OrderService } from './../../service/order.service';
 import { CheckoutComponent } from './../checkout/checkout.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,15 +16,24 @@ export class ShoppingCartComponent implements OnInit {
   @Input('cart') cart;
   showbtns: any;
   show: any;
+  isLogged: any;
   constructor(
     private cartService: CartService,
     private modalService: NgbModal,
     private orderService: OrderService,
-    private route: Router
+    private route: Router,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit() {
-    this.getCart();
+    this.isLoggedIn();
+  }
+  isLoggedIn() {
+    this.authService.contextChange.subscribe((res) => {
+      this.isLogged = this.authService.isAuthenticated();
+      this.getCart();
+    });
+    this.isLogged = this.authService.isAuthenticated();
   }
 
   getCart() {
@@ -31,8 +41,8 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = res;
     });
   }
-  removeFromCard(username, id, ticketId) {
-    this.cartService.removeCart(username, id, ticketId).subscribe((res) => {
+  removeFromCard(id, ticketId) {
+    this.cartService.removeCart(id, ticketId).subscribe((res) => {
       this.cart = res;
     });
   }

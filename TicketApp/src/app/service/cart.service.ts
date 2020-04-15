@@ -18,15 +18,15 @@ export class CartService {
       {}
     );
   }
-  removeCart(username, id, ticketId): Observable<any> {
+  removeCart(id, ticketId): Observable<any> {
     return this.http.post(
-      `${this.url}/remove?username=${username}&id=${id}&ticketId=${ticketId}`,
+      `${this.url}/remove?id=${id}&ticketId=${ticketId}`,
       {}
     );
   }
-  removeFromCart(username, id, ticketId, quantity): Observable<any> {
+  removeFromCart(id, ticketId, quantity): Observable<any> {
     return this.http.post(
-      `${this.url}/decrease?username=${username}&id=${id}&ticketId=${ticketId}&quantity=${quantity}`,
+      `${this.url}/decrease?id=${id}&ticketId=${ticketId}&quantity=${quantity}`,
       {}
     );
   }

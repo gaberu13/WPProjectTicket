@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
   getUser() {
     this.service.getUser().subscribe((res) => {
       this.user = res;
+      localStorage.setItem('user', this.user.role);
     });
   }
   isLoggedIn() {
