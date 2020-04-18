@@ -1,0 +1,36 @@
+<div style="position:relative">
+  <div class="wall">
+    <h4 class="header-title">Administrator Panel</h4>
+  </div>
+  <div class="triangle-bottomright"></div>
+  <div class="container-fluid">
+    <div class="row justify-content-center dashboard-menu">
+      <div class="card card-custom m-2">
+        <a [routerLink]="[ '/admin/event' ]">
+          <div class="card-body">
+            <i class="fa fa-map-marker icons-dash "></i>
+            <h4 class="card-title my-2">Events</h4>
+          </div>
+        </a>
+      </div>
+
+      <div class="card card-custom m-2 ">
+        <a [routerLink]="[ '/admin/category' ]">
+          <div class="card-body">
+            <i class="fa fa-paw icons-dash "></i>
+            <h4 class="card-title my-2">Categories</h4>
+          </div>
+        </a>
+      </div>
+
+      <div class="card card-custom m-2 ">
+        <a [routerLink]="[ '/admin/ticket' ]">
+          <div class="card-body">
+            <i class="fa fa-list-alt icons-dash "></i>
+            <h4 class="card-title my-2" >Tickets</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

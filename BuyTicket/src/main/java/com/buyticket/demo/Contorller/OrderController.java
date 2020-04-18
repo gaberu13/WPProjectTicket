@@ -1,6 +1,7 @@
 package com.buyticket.demo.Contorller;
 
 import com.buyticket.demo.Model.Order;
+import com.buyticket.demo.Model.Role;
 import com.buyticket.demo.Model.User;
 import com.buyticket.demo.Service.OrderService;
 import com.buyticket.demo.Service.UserService;
@@ -29,6 +30,19 @@ public class OrderController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String current = auth.getName();
         return orderService.getOrdersForUser(current);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<Boolean> deleteLocation(@RequestParam  Long id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = auth.getName();
+
+        Optional<User> user = userService.findByUsername(currentUser);
+        if (!user.get().getRole().equals(Role.admin)) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        orderService.deleteOrder(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/checkout")

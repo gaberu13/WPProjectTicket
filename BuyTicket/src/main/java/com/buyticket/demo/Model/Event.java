@@ -1,10 +1,13 @@
 package com.buyticket.demo.Model;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,35 +19,44 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Name should not be empty!")
     @Column
     private String name;
 
+    @NotEmpty(message = "Description should not be empty!")
     @Column
-    private String decription;
+    private String description;
 
+//    @NotEmpty(message = "Price should not be empty!")
     @Column
     private Integer price;
 
     @Column
     private Boolean active;
 
+    @NotEmpty(message = "Date should not be empty!")
     @Column
     private String date;
 
+    @NotEmpty(message = "Time should not be empty!")
     @Column
     private String time;
 
-
     @ManyToOne
+    @JoinColumn( name = "place_id")
     private Location place;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
-    private List<Category> category;
+    private List<Category> category = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
     private List<Ticket> tickets;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
+    private List<OrderEvent> orderEvent;
 
     public Event(String name, List<Category> category) {
         this.name = name;

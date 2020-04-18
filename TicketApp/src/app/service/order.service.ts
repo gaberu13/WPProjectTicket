@@ -16,4 +16,8 @@ export class OrderService {
   checkout(): Observable<any> {
     return this.http.post(this.url + '/checkout', {});
   }
+
+  delete(id): Observable<any> {
+    return this.http.post(`${this.url}/delete?id=${id}`, {});
+  }
 }

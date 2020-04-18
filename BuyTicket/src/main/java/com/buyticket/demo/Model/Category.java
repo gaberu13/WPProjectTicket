@@ -1,4 +1,5 @@
 package com.buyticket.demo.Model;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,7 +16,8 @@ public class Category {
     private String name;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
+    //(fetch = FetchType.LAZY)
     private List<Event> event;
 
 

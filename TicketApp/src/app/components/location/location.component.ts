@@ -1,3 +1,4 @@
+import { UiModalService } from './../../service/ui-modal.service';
 import { EditLocationComponent } from './../edit-location/edit-location.component';
 import { LocationService } from './../../service/location.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class LocationComponent implements OnInit {
   locations: any;
   constructor(
     private service: LocationService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private uiService: UiModalService
   ) {}
 
   images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
@@ -45,8 +47,14 @@ export class LocationComponent implements OnInit {
   }
 
   delete(id) {
-    this.service.delete(id).subscribe(res => {
-      this.getLocations();
-    });
+    this.uiService
+      .confirmDialog('Do you want to delete this location?')
+      .then((res) => {
+        if (!!res) {
+          this.service.delete(id).subscribe(() => {
+            this.getLocations();
+          });
+        }
+      });
   }
 }

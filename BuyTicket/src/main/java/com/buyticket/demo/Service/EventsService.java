@@ -10,8 +10,12 @@ import java.util.Optional;
 
 @Service
 public class EventsService {
+
     @Autowired
     EventsRepository eventsRepository;
+
+
+
 
     public List<Event> findAll(){
         return eventsRepository.findAll();

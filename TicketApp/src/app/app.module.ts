@@ -24,6 +24,13 @@ import { NoitemfoundComponent } from './components/noitemfound/noitemfound.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { UserTypeDirective } from './directives/user-type.directive';
 import { EditLocationComponent } from './components/edit-location/edit-location.component';
+import { AboutComponent } from './components/about/about.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { EventAdminComponent } from './components/admin/event-admin/event-admin.component';
+import { CategoryAdminComponent } from './components/admin/category-admin/category-admin.component';
+import { TicketAdminComponent } from './components/admin/ticket-admin/ticket-admin.component';
+import { UpdateEventAdminComponent } from './components/admin/update-event-admin/update-event-admin.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +49,13 @@ import { EditLocationComponent } from './components/edit-location/edit-location.
     FooterComponent,
     UserTypeDirective,
     EditLocationComponent,
+    AboutComponent,
+    AdminPanelComponent,
+    EventAdminComponent,
+    CategoryAdminComponent,
+    TicketAdminComponent,
+    UpdateEventAdminComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

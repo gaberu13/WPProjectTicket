@@ -1,7 +1,13 @@
 package com.buyticket.demo.Contorller;
 
+import com.buyticket.demo.Model.Category;
 import com.buyticket.demo.Model.Event;
+import com.buyticket.demo.Model.EventDTO;
+import com.buyticket.demo.Repository.LocationRepository;
+import com.buyticket.demo.Service.CategoryService;
 import com.buyticket.demo.Service.EventsService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +20,14 @@ public class EventsController {
 
     private EventsService eventsService;
 
-    public EventsController(EventsService eventsService) {
+    private LocationRepository locationRepository;
+
+    private CategoryService categoryService;
+
+    public EventsController(EventsService eventsService, LocationRepository locationRepository,CategoryService categoryService) {
         this.eventsService = eventsService;
+        this.locationRepository = locationRepository;
+        this.categoryService = categoryService;
     }
 
     @GetMapping
@@ -34,13 +46,31 @@ public class EventsController {
     }
 
     @PostMapping
-    public Event create(@RequestBody Event event){
-        return eventsService.createEvent(event);
+    public ResponseEntity create(@RequestBody EventDTO event) {
+        Event event1 = new Event();
+        event1.setName(event.getName());
+        event1.setDescription(event.getDescription());
+        event1.setPrice(event.getPrice());
+        event1.setPlace(locationRepository.findById(event.getPlace()).get());
+        Category c = categoryService.findById(event.getCategory()).get();
+        event1.getCategory().add(c);
+        event1.setDate(event.getDate());
+        event1.setTime(event.getTime());
+        Event saved = eventsService.createEvent(event1);
+        c.getEvents().add(saved);
+        categoryService.save(c);
+        return new ResponseEntity(saved, HttpStatus.CREATED);
+    }
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody Event event){
+        return new ResponseEntity(eventsService.createEvent(event),HttpStatus.OK);
     }
 
-    @DeleteMapping
-    public void delete(@RequestParam Long id){
-      eventsService.deleteEvent(id);
+
+    @PostMapping("/delete")
+    public ResponseEntity<Boolean> deleteLocation(@RequestParam  Long id){
+        eventsService.deleteEvent(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

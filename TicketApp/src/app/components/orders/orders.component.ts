@@ -1,3 +1,4 @@
+import { UiModalService } from './../../service/ui-modal.service';
 import { OrderService } from './../../service/order.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
   orders: any;
-  constructor(private service: OrderService) {}
+  constructor(
+    private service: OrderService,
+    private uiService: UiModalService
+  ) {}
 
   ngOnInit() {
     this.getOrders();
@@ -18,5 +22,15 @@ export class OrdersComponent implements OnInit {
     this.service.orders().subscribe((res) => {
       this.orders = res;
     });
+  }
+
+  delete(id) {
+    this.uiService
+      .confirmDialog('Do you want to delete this order?')
+      .then((res) => {
+        this.service.delete(id).subscribe(() => {
+          this.getOrders();
+        });
+      });
   }
 }

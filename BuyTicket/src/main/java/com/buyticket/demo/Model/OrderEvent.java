@@ -20,8 +20,10 @@ public class OrderEvent {
     @Column
     private int total;
 
+
     @ManyToOne
     private Event event;
+
 
     @ManyToOne
     private Ticket ticket;

@@ -1,3 +1,8 @@
+import { TicketAdminComponent } from './components/admin/ticket-admin/ticket-admin.component';
+import { CategoryAdminComponent } from './components/admin/category-admin/category-admin.component';
+import { EventAdminComponent } from './components/admin/event-admin/event-admin.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { AboutComponent } from './components/about/about.component';
 import { LocationComponent } from './components/location/location.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AuthGuardService } from './service/auth-guard.service';
@@ -11,7 +16,6 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: EventDetailsComponent,
-    // canActivate: [AuthGuardService],
   },
   {
     path: 'orders',
@@ -21,7 +25,30 @@ const routes: Routes = [
   {
     path: 'location',
     component: LocationComponent,
-    // canActivate: [AuthGuardService],
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'admin/event',
+    component: EventAdminComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'admin/category',
+    component: CategoryAdminComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'admin/ticket',
+    component: TicketAdminComponent,
+    canActivate: [AuthGuardService],
   },
 ];
 

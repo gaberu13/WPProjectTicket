@@ -15,6 +15,12 @@ export class EventsService {
     return this.http.get(this.url + '/' + id);
   }
   createEvent(model): Observable<any> {
-    return this.http.post<any>(this.url, model);
+    return this.http.post(this.url, model);
+  }
+  update(model): Observable<any> {
+    return this.http.post(this.url + '/update', model);
+  }
+  deleteById(id): Observable<any> {
+    return this.http.post( `${this.url}/delete?id=${id}`, {});
   }
 }

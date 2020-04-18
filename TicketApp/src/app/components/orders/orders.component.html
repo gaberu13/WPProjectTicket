@@ -17,6 +17,7 @@
               <th>Total</th>
               <th>Contact</th>
               <th width="150"></th>
+              <th width="50"></th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +69,11 @@
               </td>
               <td>
                 <button class="btn btn-main"> Pay order</button>
+              </td>
+              <td>
+                <button class="btn" (click)="delete(order.id)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
               </td>
             </tr>
           </tbody>

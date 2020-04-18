@@ -145,9 +145,6 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleAll(final Exception ex, final WebRequest request) {
         final HashMap errors = new HashMap();
         errors.put("form","You have empty inputs, please check again!");
-//        logger.info(ex.getClass().getName());
-//        logger.error("error", ex);
-        //
         final Error apiError = new Error(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), errors);
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }

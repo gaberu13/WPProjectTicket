@@ -33,6 +33,7 @@ public class OrderService {
         return  orderRepository.findAllByUser_Username(username);
     }
 
+    public void deleteOrder(Long id){ orderRepository.deleteById(id);}
 
     public Order checkout(User user){
 

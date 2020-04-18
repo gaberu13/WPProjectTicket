@@ -7,8 +7,8 @@
     <div class="col-sm-5 menu-items">
       <button class="btn" [routerLink]="['/']">
         <i class="fa fa-home"></i> Home</button>
-      <button class="btn">About</button>
-      <button class="btn">Contact</button>
+      <button class="btn" [routerLink]="['/about']">About</button>
+      <!-- <button class="btn">Contact</button> -->
       <button class="btn" [routerLink]="['/location']">Locations</button>
       <button class="btn" [routerLink]="['/orders']">Orders</button>
       <button class="btn"  *ngIf="!isLogged"  [routerLink]="['/login']"> <i class="fa fa-user" aria-hidden="true"></i> Login</button>
