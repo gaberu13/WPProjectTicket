@@ -41,7 +41,7 @@ INSERT INTO `location` (`id`, `capacity`, `description`, `name`) VALUES
 (5, '2000', 'Macedonian Philharmonic', 'Macedonian Philharmonic');
 
 3.Insert Event:
-INSERT INTO `event` (`id`, `active`, `date`, `decription`, `name`, `price`, `time`, `place_id`) VALUES
+INSERT INTO `event` (`id`, `active`, `date`, `description`, `name`, `price`, `time`, `place_id`) VALUES
 (1, b'1', '24.05.2020', 'Music festival with a lot of famus singers on one stage', 'Music Festival', 150, '21:00', 1),
 (2, b'1', '15.05.2020', 'Taksirat Festival', 'In Flames', 800, '20:30', 2),
 (3, b'1', 'March', 'Do you balieve in everything you see? Visit us!', 'Ilusium', 200, '08:00 - 17:00', 3),
