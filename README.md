@@ -51,16 +51,16 @@ INSERT INTO `event` (`id`, `active`, `date`, `description`, `name`, `price`, `ti
 (7, b'1', '01.06.2020', 'Young actors from the School of Drama in Skopje', 'MME', 200, '21:00', 3),
 (8, b'1', '19.05.2020', 'One of the most famous ballets ever seen in the world.', 'The Nutcracker', 1200, '20:00', 3);
 
-4.Insert Category_Event:
-INSERT INTO `category_event` (`category_id`, `event_id`) VALUES
-(2, 1),
+4.Insert Event_category:
+INSERT INTO `event_category` (`event_id`, `category_id`) VALUES
+(1, 2),
 (2, 2),
-(6, 3),
-(2, 4),
-(2, 5),
-(1, 6),
-(3, 7),
-(4, 8);
+(3, 6),
+(4, 2),
+(5, 2),
+(6, 1),
+(7, 3),
+(8, 4);
 
 5. Insert Ticket:
 INSERT INTO `ticket` (`id`, `count`, `location`, `price`, `event_id`) VALUES
