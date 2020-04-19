@@ -26,6 +26,6 @@ public class Location {
     private String capacity;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "place")
+    @OneToMany(mappedBy = "place",cascade = CascadeType.DETACH)
     private List<Event> event;
 }

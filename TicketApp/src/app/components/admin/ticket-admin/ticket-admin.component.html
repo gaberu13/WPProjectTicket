@@ -1,1 +1,73 @@
-<p>ticket-admin works!</p>
+<div style="position:relative">
+  <div class="wall">
+    <h4 class="header-title">
+      <button class="btn white" [routerLink]="['/admin']">
+        <i class="fa fa-arrow-left"></i>
+      </button> Tickets</h4>
+    <div class="edit">
+      <button class="btn btn-main" (click)="open()" >Add Ticket</button>
+       
+    </div>
+  </div>
+  <div class="triangle-bottomright"></div>
+ <div class="container-fluid">
+    <div class="row" *ngIf="!!events">
+      <div class="col-md-12">
+        <div class="table-container table-responsive table-position">
+          <table class="table table-hover" *ngIf="!!events.length">
+            <thead>
+              <tr>
+                <th width="50"></th>
+                <th>Name</th>
+                <th>Ticket Name</th>
+                <th>Ticket Count</th>
+                <th>Ticket Price</th>
+                <th width="150"></th>
+                <th width="50"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of events">
+                <td></td>
+                <td>
+                  <span class="d-block">
+                    <strong>{{ event.name  }}</strong>
+                  </span>
+                </td>
+                <td>
+                  <span *ngFor="let ticket of event.tickets" class="d-block">
+                    <span>{{ ticket.location }}</span> 
+                  </span>
+                </td>
+                <td>
+                    <span *ngFor="let ticket of event.tickets" class="d-block">
+                        <span>{{ticket.count}}</span>
+                    </span>
+                  </td>
+                  <td>
+                    <span *ngFor="let ticket of event.tickets" class="d-block">
+                        <span>{{ticket.price}}</span><small> MKD</small>
+                    </span>
+                  </td>
+                  <td class="text-center">
+                    <span *ngFor="let ticket of event.tickets" class="d-block">
+                       <a class="pointer" (click)="open(ticket)">Edit</a>
+                    </span>
+                  </td>
+                <td class="text-center">
+                    <span *ngFor="let ticket of event.tickets" class="d-block">
+                        <a class="pointer" (click)="delete(ticket.id)"><i class="fa fa-trash" aria-hidden="true"></i> </a>
+                        
+                     </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center" *ngIf="!events.length">
+            <app-noitemfound></app-noitemfound>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>

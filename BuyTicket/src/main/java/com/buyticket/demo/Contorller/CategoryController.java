@@ -2,6 +2,8 @@ package com.buyticket.demo.Contorller;
 
 import com.buyticket.demo.Model.Category;
 import com.buyticket.demo.Service.CategoryService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,10 +29,19 @@ public class CategoryController {
         return categoryService.findById(id);
     }
 
-    @GetMapping("/tmp")
-    public List<Category> tmp(@RequestParam String name) {
-        return categoryService.tmp(name);
+    @GetMapping("/event")
+    public List<Category> getCategoryByEventName(@RequestParam String name) {
+        return categoryService.getCategoryByEventName(name);
     }
 
+    @PostMapping
+    public ResponseEntity create(@RequestBody Category category) {
+        return new ResponseEntity(categoryService.save(category), HttpStatus.OK);
+    }
 
+    @PostMapping("/delete")
+    public ResponseEntity<Boolean> deleteCategory(@RequestParam  Long id){
+        categoryService.deleteCategory(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

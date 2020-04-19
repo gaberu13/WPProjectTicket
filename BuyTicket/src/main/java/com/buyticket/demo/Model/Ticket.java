@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Getter
@@ -23,7 +25,11 @@ public class Ticket {
     private int price;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Event event;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "ticket",cascade = CascadeType.DETACH)
+    private List<OrderEvent> orderEvents = new ArrayList<>();
 
 }

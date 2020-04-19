@@ -32,8 +32,10 @@ public class UserContorller {
         user.setShoppingCart(new ShoppingCart());
         if(userService.getAllUsers().isEmpty()){
             user.setRole(Role.admin);
+        }else{
+            user.setRole(Role.user);
         }
-        user.setRole(Role.user);
+
         userService.save(user);
     }
 

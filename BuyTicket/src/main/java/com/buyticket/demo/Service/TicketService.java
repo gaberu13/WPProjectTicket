@@ -22,4 +22,11 @@ public class TicketService {
     }
 
     public Optional<Ticket> find(Long id){ return  ticketRepository.findById(id);}
+
+    public Ticket createTicket(Ticket ticket) {
+        return ticketRepository.save(ticket);
+    }
+    public void deleteTicket(Long id){
+        ticketRepository.deleteById(id);
+    }
 }

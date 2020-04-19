@@ -3,6 +3,7 @@ package com.buyticket.demo.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,9 +17,8 @@ public class Category {
     private String name;
 
     @JsonIgnore
-    @ManyToMany
-    //(fetch = FetchType.LAZY)
-    private List<Event> event;
+    @ManyToMany(mappedBy = "category")
+    private List<Event> event = new ArrayList<>();
 
 
     public List<Event> getEvents() {

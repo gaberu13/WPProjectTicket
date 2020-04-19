@@ -57,7 +57,6 @@ public class ShoppingCardService {
             }
         }
         shoppingCart.setTotalSum(shoppingCart.getOrderEvents().stream().mapToDouble(ui->ui.getTotal()).sum());
-
         userService.save(user.get());
         return shoppingCart;
     }

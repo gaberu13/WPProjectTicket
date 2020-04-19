@@ -29,7 +29,9 @@ export class UpdateEventAdminComponent implements OnInit {
   ngOnInit(): void {
     this.getLocations();
     this.getCategories();
+    if (!!this.id) {
     this.getEventById(this.id);
+    }
   }
 
   add() {

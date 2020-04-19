@@ -6,19 +6,19 @@
 <div class="row justify-content-center">
   <div class="col-8 mb-5">
     <label>Name</label>
-    <input type="text" placeholder="Name" class="form-control" [(ngModel)]="event.name" />
+    <input type="text" placeholder="Name" class="form-control" [(ngModel)]="event.name"/>
     <p class="error-message" *ngIf="error">{{error.name}}</p>
     <label>Description</label>
-    <input type="text" placeholder="Description" class="form-control" [(ngModel)]="event.description" />
+    <input type="text" placeholder="Description" class="form-control" [(ngModel)]="event.description"/>
     <p class="error-message" *ngIf="error">{{error.description}}</p>
     <label>Price</label>
-    <input type="number" placeholder="Price" class="form-control" [(ngModel)]="event.price" />
+    <input type="number" placeholder="Price" class="form-control" [(ngModel)]="event.price"/>
     <p class="error-message" *ngIf="error">{{error.price}}</p>
     <label>Date</label>
-    <input type="date" placeholder="Date" class="form-control" [(ngModel)]="event.date" />
+    <input type="date" placeholder="Date" class="form-control" [(ngModel)]="event.date"/>
     <p class="error-message" *ngIf="error">{{error.date}}</p>
     <label>Time</label>
-    <input type="time" placeholder="Time" class="form-control" [(ngModel)]="event.time" />
+    <input type="time" placeholder="Time" class="form-control" [(ngModel)]="event.time"/>
     <p class="error-message" *ngIf="error">{{error.time}}</p>
     <div class="form-group" *ngIf="!event.id">
       <label>Place</label>
@@ -33,12 +33,11 @@
       </select>
     </div>
 
-
     <p class="error-message" *ngIf="error">{{error.form}}</p>
     <div class="text-center mt-5">
       <button class="btn btn-main" *ngIf="!event.id" (click)="add()">Confirm</button>
       <button class="btn btn-main" *ngIf="!!event.id" (click)="update()">Update</button>
-      
+
       <button class="btn" (click)="cancel()">Cancel</button>
     </div>
   </div>

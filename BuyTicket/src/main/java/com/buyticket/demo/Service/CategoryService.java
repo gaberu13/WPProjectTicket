@@ -26,9 +26,14 @@ public class CategoryService {
         return categortyRepository.findAll();
     }
 
-    public List<Category> tmp(String name) {
+    public List<Category> getCategoryByEventName(String name) {
         return categortyRepository.findAllByEventName(name);
     }
+
+    public void deleteCategory(Long id){
+        categortyRepository.deleteById(id);
+    }
+
     public Optional<Category> findById(Long id){
         return categortyRepository.findById(id);
     }

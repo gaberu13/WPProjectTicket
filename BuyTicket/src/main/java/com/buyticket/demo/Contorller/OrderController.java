@@ -1,8 +1,8 @@
 package com.buyticket.demo.Contorller;
 
 import com.buyticket.demo.Model.Order;
-import com.buyticket.demo.Model.Role;
 import com.buyticket.demo.Model.User;
+import com.buyticket.demo.Service.OrderEventService;
 import com.buyticket.demo.Service.OrderService;
 import com.buyticket.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,9 @@ public class OrderController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private OrderEventService orderEventService;
+
     @GetMapping
     public List<Order> my(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,13 +37,6 @@ public class OrderController {
 
     @PostMapping("/delete")
     public ResponseEntity<Boolean> deleteLocation(@RequestParam  Long id) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String currentUser = auth.getName();
-
-        Optional<User> user = userService.findByUsername(currentUser);
-        if (!user.get().getRole().equals(Role.admin)) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
         orderService.deleteOrder(id);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -51,12 +47,12 @@ public class OrderController {
         String username = auth.getName();
         Optional<User> user = userService.findByUsername(username);
         Order order = orderService.checkout( user.get());
-
         if (order == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         return new ResponseEntity<>(order, HttpStatus.OK);
+
+
     }
 
 

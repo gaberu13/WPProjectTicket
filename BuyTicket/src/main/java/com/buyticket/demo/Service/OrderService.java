@@ -20,6 +20,8 @@ public class OrderService {
     private OrderRepository orderRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderEventService orderEventService;
 
     public Optional<Order> findById(Long id){
         return orderRepository.findById(id);

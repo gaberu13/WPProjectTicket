@@ -1,1 +1,57 @@
-<p>category-admin works!</p>
+<div style="position:relative">
+  <div class="wall">
+    <h4 class="header-title">
+      <button class="btn white" [routerLink]="['/admin']">
+        <i class="fa fa-arrow-left"></i>
+      </button> Categories</h4>
+    <div class="edit">
+      <button class="btn btn-main" (click)="open()">Add Category</button>
+    </div>
+  </div>
+  <div class="triangle-bottomright"></div>
+  <div class="container-fluid">
+    <div class="row" *ngIf="!!categories">
+      <div class="col-md-12">
+        <div class="table-container table-responsive table-position">
+          <table class="table table-hover" *ngIf="!!categories.length">
+            <thead>
+              <tr>
+                <th width="50"></th>
+                <th>Name</th>
+                <th>Events</th>
+                <th width="150"></th>
+                <th width="50"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categories">
+                <td></td>
+                <td>
+                  <span class="d-block">
+                    <strong>{{ category.name  }}</strong>
+                  </span>
+                </td>
+                <td>
+                  <span *ngFor="let event of category.events" class="d-block">
+                    <small>{{ event.name }}</small>
+                  </span>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-main" (click)="open(category)"> Edit</button>
+                </td>
+                <td class="text-center">
+                  <button class="btn" (click)="deleteEvent(category.id)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center" *ngIf="!categories.length">
+            <app-noitemfound></app-noitemfound>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

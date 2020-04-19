@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
   url = 'http://localhost:8080/categories';
@@ -14,5 +14,12 @@ export class CategoryService {
   }
   getCategoryId(id): Observable<any> {
     return this.http.get(this.url + '/' + id);
+  }
+  createCategory(model): Observable<any> {
+    return this.http.post(this.url, model);
+  }
+
+  deleteById(id): Observable<any> {
+    return this.http.post(`${this.url}/delete?id=${id}`, {});
   }
 }

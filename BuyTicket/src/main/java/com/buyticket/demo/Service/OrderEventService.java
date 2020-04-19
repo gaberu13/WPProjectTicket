@@ -17,4 +17,6 @@ public class OrderEventService {
     public  OrderEvent save(OrderEvent orderEvent){
         return  orderEventRepository.save(orderEvent);
     }
+
+    public void removeAll(){  orderEventRepository.deleteAll();}
 }

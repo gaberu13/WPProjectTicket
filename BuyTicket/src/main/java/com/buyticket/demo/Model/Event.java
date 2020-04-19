@@ -42,20 +42,20 @@ public class Event {
     @Column
     private String time;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn( name = "place_id")
     private Location place;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
+    @ManyToMany
     private List<Category> category = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "event",cascade = CascadeType.DETACH)
     private List<Ticket> tickets;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "event", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "event")
     private List<OrderEvent> orderEvent;
 
     public Event(String name, List<Category> category) {

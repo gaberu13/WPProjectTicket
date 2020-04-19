@@ -31,6 +31,8 @@ import { CategoryAdminComponent } from './components/admin/category-admin/catego
 import { TicketAdminComponent } from './components/admin/ticket-admin/ticket-admin.component';
 import { UpdateEventAdminComponent } from './components/admin/update-event-admin/update-event-admin.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { UpdateCateogryAdminComponent } from './components/admin/update-cateogry-admin/update-cateogry-admin.component';
+import { UpdateTicketAdminComponent } from './components/admin/update-ticket-admin/update-ticket-admin.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     TicketAdminComponent,
     UpdateEventAdminComponent,
     ConfirmDialogComponent,
+    UpdateCateogryAdminComponent,
+    UpdateTicketAdminComponent,
   ],
   imports: [
     BrowserModule,
