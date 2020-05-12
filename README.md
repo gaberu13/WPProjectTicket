@@ -91,10 +91,11 @@ INSERT INTO `ticket` (`id`, `count`, `location`, `price`, `event_id`) VALUES
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/details2.png)
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/oreders.png)
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/about.png)
+### First registered user is administrator, administrator can menage events, tickets, locations and categories.
+### Administrator panel is not accessible by regular client.
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/admin.png)
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/event_admin.png)
 ![Local image](https://github.com/gaberu13/WPProjectTicket/blob/master/Images/event_admin_add.png)
-# First registered user is administrator, administrator can menage events, tickets, locations and categories.
-# Administrator panel is not accessible by regular client.
+
 #### WP, FINKI, 2020
 #### Kristijan Gaber, 152060
