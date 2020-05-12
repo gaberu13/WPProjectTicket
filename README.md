@@ -20,7 +20,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/tickets?serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=
 ```
-Open XAMPP control panel, start MySQL and Apache server. Create SQL schema with name "tickets", build your Spring Boot aplication and in "tickets" SQL schema you need to execute below code to add Categories, Events, Tickets, Locations data:
+Open XAMPP control panel, start MySQL and Apache server. Create SQL schema with name "tickets", build your Spring Boot aplication and in "tickets" SQL schema you need to execute below code to add Categories, Events, Tickets, Locations data or add manually as administrator :
 ```
 1.Insert Category:
 
